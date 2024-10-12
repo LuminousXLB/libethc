@@ -579,5 +579,6 @@ int eth_rlp_free(struct eth_rlp *dest) {
   cframe = dest->cframe;
 
   free(cframe->buf);
+  free(cframe);
   return 1;
 }
