@@ -326,8 +326,7 @@ int eth_abi_call(struct eth_abi *abi, char **fn, int *len) {
   cframebuf = abi->cframe->buf;
 
   if (abi->m == ETH_ABI_ENCODE) {
-    if (len == NULL)
-      fnlen = strlen(*fn);
+    fnlen = len ? *len : strlen(*fn);
 
     if (eth_keccak256(keccak, (uint8_t*)*fn, fnlen) < 0)
       return -1;
