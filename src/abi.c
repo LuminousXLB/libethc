@@ -774,6 +774,11 @@ int eth_abi_from_hex(struct eth_abi *abi, char *hex, int len) {
   if (ethc_abi_frame_init(&nframe) < 0)
     return -1;
 
+  if (nframe->buf->buf != NULL) {
+    free(nframe->buf->buf);
+    nframe->buf->buf = NULL;
+  }
+
   if ((len = eth_hex_to_bytes(&(nframe->buf->buf), hex, len)) < 0)
     return -1;
 
