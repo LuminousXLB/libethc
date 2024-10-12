@@ -293,6 +293,7 @@ void test_eth_rlp_decode_eip1559_tx(void) {
   ok(eth_rlp_hex(&rlp, &r, NULL));
   ok(eth_rlp_hex(&rlp, &s, NULL));
   ok(eth_rlp_array_end(&rlp));
+  ok(eth_rlp_free(&rlp) == 1);
 
   // check
   is(chain_id_hex, "aa36a7");
@@ -309,4 +310,13 @@ void test_eth_rlp_decode_eip1559_tx(void) {
   ok(v == 1);
   is(r, "99c06b4f79b805ae7be2dcd21191e470362c9d66b7cfea90b185015893a1477e");
   is(s, "3c16ce20c94c5ee0598154007a67fae010769fe3db29a1e40ac9532a91835a0c");
+
+  free(chain_id_hex);
+  free(max_priority_fee_per_gas);
+  free(max_fee_per_gas);
+  free(gas_limit);
+  free(to_addr);
+  free(abi_hex);
+  free(r);
+  free(s);
 }
