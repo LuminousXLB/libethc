@@ -246,6 +246,7 @@ void test_eth_rlp_to_bytes(void) {
   ok(eth_rlp_free(&rlp0) == 1);
   cmp_mem(bout, bytes, boutlen);
   ok(boutlen == 3);
+  free(bout);
 }
 
 void test_eth_rlp_decode_eip1559_tx(void) {
