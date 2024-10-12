@@ -563,11 +563,14 @@ int eth_rlp_from_hex(struct eth_rlp *dest, char *hex, int len) {
   if ((sbuf = eth_hex_to_bytes(&buf, hex, len)) <= 0)
     return -1;
 
-  if (eth_rlp_frame_init(&nframe, buf, sbuf) <= 0)
+  if (eth_rlp_frame_init(&nframe, buf, sbuf) <= 0) {
+    free(buf);
     return -1;
+  }
 
   dest->cframe = nframe;
   dest->m = ETH_RLP_DECODE;
+  free(buf);
   return 1;
 }
 
