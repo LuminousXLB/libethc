@@ -256,6 +256,7 @@ void test_eth_abi_mpint(void) {
   ok(eth_abi_mpint(&abi0, mpz1) == 1);
   ok(eth_abi_mpint(&abi0, mpz2) == 1);
   ok(eth_abi_to_hex(&abi0, &hex, &hexlen) == 1);
+  ok(eth_abi_free(&abi0) == 1);
 
   is(hex, "00000000000000000000000000000000000000000000000000000000000000ff"
           "0000000000000000000000000000000000000000000000000000000000000fff"
@@ -268,6 +269,7 @@ void test_eth_abi_mpint(void) {
   mpz_init_set_str(mpz0, "0x0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff", 0);
   mpz_init(mpz1);
   ok(eth_abi_mpint(&abi1, mpz1) == 1);
+  ok(eth_abi_free(&abi1) == 1);
   ok(mpz_cmp(mpz0, mpz1) == 0);
   mpz_clears(mpz0, mpz1, NULL);
 }
