@@ -35,6 +35,7 @@ void test_eth_bloom_or(void) {
 
   eth_bloom_from_bytes(&bloom1, address, 20);
   eth_bloom_from_bytes(&bloom2, topic, 32);
+  eth_bloom_init(&bloom3);
 
   eth_bloom_or(&bloom3, &bloom1);
   eth_bloom_or(&bloom3, &bloom2);
