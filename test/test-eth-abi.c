@@ -336,7 +336,7 @@ void test_eth_abi_bytes32() {
   ok(eth_abi_from_hex(&abi1,
         "f507a54fef38fbd2718fff5f6b54a65d57b079df170b0cd7985d9ce699c031c3", -1) == 1);
   ok(eth_abi_bytes32(&abi1, b1) == 1);
-  ok(eth_abi_free(&abi0) == 1);
+  ok(eth_abi_free(&abi1) == 1);
   cmp_mem(b1, b0, 32);
 }
 
