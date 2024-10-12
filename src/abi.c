@@ -302,6 +302,7 @@ int eth_abi_address(struct eth_abi *abi, char **addr) {
     memcpy(&(cframebuf->buf[cframebuf->offset + 12]), tmp, 20);
     cframebuf->offset += ETH_ABI_WORD_SIZE;
     cframebuf->len += ETH_ABI_WORD_SIZE;
+    free(tmp);
     return 1;
   }
 
